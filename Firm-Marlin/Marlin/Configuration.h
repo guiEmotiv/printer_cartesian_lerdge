@@ -135,7 +135,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Team MakerWelt"
+#define CUSTOM_MACHINE_NAME "Team FabLab"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -277,7 +277,7 @@
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken.
 // Otherwise this would lead to the heater being powered on all the time.
-#define HEATER_0_MINTEMP 25
+#define HEATER_0_MINTEMP 15
 #define HEATER_1_MINTEMP 5
 #define HEATER_2_MINTEMP 5
 #define HEATER_3_MINTEMP 5
@@ -378,7 +378,7 @@
 // or to allow moving the extruder regardless of the hotend temperature.
 // *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 25
+#define EXTRUDE_MINTEMP 20
 
 // This option prevents a single extrusion longer than EXTRUDE_MAXLENGTH.
 // Note that for Bowden Extruders a too-small value here may prevent loading.
@@ -485,15 +485,18 @@
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3]]]
+cartesian cesar                         160,160,550,145
+corexy augusto                          160,160,710,145
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 500, 270 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 710, 145 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3]]]
+cartesian cesar                         300, 300, 300, 100
  */
-#define DEFAULT_MAX_FEEDRATE          { 400, 400, 500, 20 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 300, 100 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -501,7 +504,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 500 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -525,7 +528,7 @@
 #define DEFAULT_XJERK                 20.0
 #define DEFAULT_YJERK                 20.0
 #define DEFAULT_ZJERK                  0.4
-#define DEFAULT_EJERK                  20.0
+#define DEFAULT_EJERK                  5.0
 
 
 //===========================================================================
@@ -578,12 +581,16 @@
 //    |           |
 //    O-- FRONT --+
 //  (0,0)
+
 #define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER 1   // Z offset: -below +above  [the nozzle]
+
+//augusto  -1.2
+//cesar    -0.8
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.2   // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 8000
+#define XY_PROBE_SPEED 5000
 // Speed for the first approach when double-probing (with PROBE_DOUBLE_TOUCH)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
 // Speed for the "accurate" probe of each point
@@ -655,8 +662,8 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   20 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  10 // Z Clearance between probe points
+#define Z_CLEARANCE_DEPLOY_PROBE   1 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  1 // Z Clearance between probe points
 
 //
 // For M851 give a range for adjusting the Z probe offset
@@ -722,7 +729,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS 200
 #define Y_MAX_POS 200
-#define Z_MAX_POS 400
+#define Z_MAX_POS 600
 
 //===========================================================================
 //========================= Filament Runout Sensor ==========================
@@ -814,7 +821,7 @@
   #define BACK_PROBE_BED_POSITION 170
 
   // The Z probe minimum outer margin (to validate G29 parameters).
-  #define MIN_PROBE_EDGE 10
+  #define MIN_PROBE_EDGE 1
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
@@ -885,8 +892,8 @@
 #endif
 
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY (50*90)
-#define HOMING_FEEDRATE_Z  (50*70)
+#define HOMING_FEEDRATE_XY (50*80)
+#define HOMING_FEEDRATE_Z  (50*40)
 
 //=============================================================================
 //============================= Additional Features ===========================
@@ -1250,7 +1257,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-#define REPRAP_DISCOUNT_SMART_CONTROLLER
+//#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
 // GADGETS3D G3D LCD/SD Controller
@@ -1264,7 +1271,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // MakerLab Mini Panel with graphic
